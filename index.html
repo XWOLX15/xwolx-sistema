@@ -539,20 +539,20 @@
     <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
         <div class="w-full max-w-md bg-brand-900 border border-brand-800 rounded-2xl shadow-2xl overflow-hidden p-6 space-y-5">
             <div class="flex justify-between items-center border-b border-brand-800 pb-3">
-                <h3 id="checkout-modal-title" class="font-black text-white text-sm uppercase tracking-wider">Finalizar Venta</h3>
+                <h3 id="checkout-modal-title" class="font-black text-white text-sm uppercase tracking-wider">Finalizar Emisión</h3>
                 <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">RUC o DNI del Cliente (Opcional)</label>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">RUC o DNI del Cliente</label>
                     <div class="flex gap-2">
                         <input type="text" id="checkout-doc" placeholder="Número de documento..." class="flex-1 bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
-                        <button onclick="quickSunatCheckout()" class="bg-brand-800 hover:bg-brand-700 text-white px-4 py-2 rounded-xl text-xs font-bold border border-brand-700">SUNAT</button>
+                        <button onclick="quickSunatCheckout()" class="bg-brand-red hover:bg-brand-redHover text-white px-4 py-2 rounded-xl text-xs font-bold uppercase shadow">SUNAT</button>
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Razón Social / Nombre Cliente</label>
-                    <input type="text" id="checkout-client" placeholder="CLIENTE GENERAL" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
+                    <input type="text" id="checkout-client" placeholder="Ingrese o consulte DNI/RUC..." class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
                 </div>
                 <div class="bg-brand-950 p-4 rounded-xl border border-brand-800 space-y-1 text-xs">
                     <div class="flex justify-between text-gray-400"><span>Monto Total a Pagar:</span> <span id="checkout-modal-total" class="font-black text-white text-base">S/ 0.00</span></div>
@@ -638,7 +638,6 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
 
-        // Default preloaded products (Stock: 0)
         const DEFAULT_PRODUCTS = [
             { id: "XW114", code: "XW114", name: "KIT MOLDURA GR / MANIJAS - VASO - ESPEJO HILUX 2016-2026", stock: 0, buyPrice: 120.00, sellPrice: 180.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW114" },
             { id: "XW078", code: "XW078", name: "KIT MOLDU. FIBRA DE CARBONO HILUX SRV 2021+", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW078" },
@@ -713,7 +712,6 @@
             token: ''
         };
 
-        // Authentication & Initialization
         async function initFirebase() {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -795,7 +793,6 @@
             sidebar.classList.toggle('hidden');
         };
 
-        // Logo Customization
         window.openLogoModal = function() {
             document.getElementById('custom-logo-input').value = customLogo;
             document.getElementById('logo-modal').classList.remove('hidden');
@@ -829,7 +826,6 @@
             }
         }
 
-        // Firestore Sync Listeners
         function startRealtimeListeners() {
             const user = auth.currentUser;
             if (!user) return;
@@ -936,7 +932,6 @@
             alert('¡Configuración de RX AURORA COMPANY SAC guardada y sincronizada en todos tus dispositivos!');
         };
 
-        // POS Catalog Rendering
         window.renderPosCatalog = function() {
             const query = (document.getElementById('pos-search').value || '').toLowerCase();
             const grid = document.getElementById('pos-product-grid');
@@ -973,7 +968,6 @@
             });
         };
 
-        // Cart Management & Editable Price
         window.addToCart = function(code) {
             const product = products.find(p => p.code === code);
             if (!product) return;
@@ -1072,7 +1066,6 @@
             document.getElementById('cart-total').textContent = `S/ ${total.toFixed(2)}`;
         }
 
-        // Checkout Modal & Processing
         let currentCheckoutType = 'FACTURA';
         window.openCheckoutModal = function(type) {
             if (cart.length === 0) {
@@ -1151,7 +1144,6 @@
             generatePrintableReceipt(saleRecord);
         };
 
-        // REAL SUNAT / RENIEC API LOOKUP FETCH
         window.consultSunatAPI = async function() {
             const type = document.getElementById('sunat-doc-type').value;
             const num = document.getElementById('sunat-doc-num').value.trim();
@@ -1193,7 +1185,7 @@
                 }
             } catch (err) {
                 console.warn('API error or fallback mode:', err);
-                let fallbackName = num.length === 11 ? "CORPORACION AUTOMOTRIZ HILUX SAC" : "CLIENTE FRECUENTE";
+                let fallbackName = num.length === 11 ? "CORPORACION AUTOMOTRIZ HILUX SAC" : "RUBEN M. GUILLEN MARCA";
                 let fallbackAddr = "CUSCO, PERU";
                 
                 if (targetInputId) document.getElementById(targetInputId).value = fallbackName;
@@ -1301,7 +1293,6 @@
             window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encoded}`, '_blank');
         };
 
-        // Inventory Management Table
         window.renderInventoryTable = function() {
             const query = (document.getElementById('inv-search').value || '').toLowerCase();
             const tbody = document.getElementById('inventory-table-body');
@@ -1438,7 +1429,6 @@
             }
         };
 
-        // Expenses / Freight Modal
         window.openExpenseModal = function() {
             document.getElementById('expense-modal').classList.remove('hidden');
         };
@@ -1466,7 +1456,6 @@
             renderReports('today');
         };
 
-        // Reports & Statistics
         window.renderReports = function(filter) {
             document.querySelectorAll('.report-filter-btn').forEach(btn => {
                 btn.className = 'report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-800 text-gray-300 hover:bg-brand-700 transition';
