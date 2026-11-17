@@ -54,8 +54,8 @@
                 <div id="login-logo-container" class="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-brand-800 border border-brand-red/30 mb-4 shadow-lg overflow-hidden">
                     <span class="text-2xl font-black text-brand-red tracking-wider">X-WOLX</span>
                 </div>
-                <h1 class="text-2xl font-black tracking-wider text-white">RX AURORA COMPANY</h1>
-                <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest font-semibold">Acceso Autorizado - ERP & POS</p>
+                <h1 class="text-2xl font-black tracking-wider text-white">X-WOLX / RX AURORA</h1>
+                <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest font-semibold">RUC: 20616684141 • Sede Cusco</p>
             </div>
 
             <form id="login-form" onsubmit="handleLogin(event)" class="space-y-5">
@@ -84,7 +84,7 @@
             </form>
 
             <div class="mt-8 text-center border-t border-brand-800 pt-4">
-                <p class="text-[11px] text-gray-500">RUC: 20616684141 • Sede RX AURORA</p>
+                <p class="text-[11px] text-gray-500">Credenciales: AURORA / 15042026 • Sincronización en la Nube Activa</p>
             </div>
         </div>
     </div>
@@ -127,7 +127,7 @@
                 </button>
                 <button onclick="switchTab('config')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-bold transition text-gray-400 hover:bg-brand-800 hover:text-white" data-tab="config">
                     <i class="fa-solid fa-gears w-5 text-center"></i>
-                    <span>Config API SUNAT</span>
+                    <span>Config API SUNAT & SOL</span>
                 </button>
             </nav>
 
@@ -139,7 +139,7 @@
                     </div>
                     <div>
                         <p class="text-xs font-bold text-white">AURORA</p>
-                        <p class="text-[10px] text-gray-400">RX AURORA SAC</p>
+                        <p class="text-[10px] text-gray-400">RX AURORA COMPANY SAC</p>
                     </div>
                 </div>
                 <button onclick="handleLogout()" class="text-gray-400 hover:text-brand-red transition p-2 rounded-lg hover:bg-brand-800" title="Cerrar Sesión">
@@ -158,8 +158,8 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <div class="hidden sm:flex items-center space-x-2 bg-brand-950 px-3 py-1.5 rounded-lg border border-brand-800 text-xs text-gray-400">
-                        <i class="fa-solid fa-cloud text-emerald-500"></i>
-                        <span>Cloud Sync Activo</span>
+                        <i class="fa-solid fa-cloud text-emerald-500" id="sync-status-icon"></i>
+                        <span id="sync-status-text">Cloud Sincronizado</span>
                     </div>
                     <button onclick="openLogoModal()" class="bg-brand-800 hover:bg-brand-700 text-gray-200 px-3 py-1.5 rounded-lg text-xs font-bold border border-brand-700 transition flex items-center space-x-2">
                         <i class="fa-solid fa-image text-brand-red"></i>
@@ -196,7 +196,7 @@
                         <div class="p-4 border-b border-brand-800 bg-brand-800/50 flex items-center justify-between">
                             <h3 class="font-black text-white text-sm uppercase tracking-wider flex items-center space-x-2">
                                 <i class="fa-solid fa-cart-shopping text-brand-red"></i>
-                                <span>Carrito de Venta</span>
+                                <span>Carrito de Venta (Editable)</span>
                             </h3>
                             <button onclick="clearCart()" class="text-xs text-gray-400 hover:text-brand-red font-bold transition">Limpiar</button>
                         </div>
@@ -220,14 +220,14 @@
                             </div>
 
                             <div class="grid grid-cols-3 gap-2 pt-2">
-                                <button onclick="openCheckoutModal('FACTURA')" class="bg-brand-red hover:bg-brand-redHover text-white font-bold py-2.5 px-1 rounded-xl text-[11px] uppercase tracking-wider transition shadow-lg shadow-brand-red/30">
-                                    <i class="fa-solid fa-file-invoice block mb-1 text-xs"></i> Factura
+                                <button onclick="openCheckoutModal('FACTURA')" class="bg-brand-red hover:bg-brand-redHover text-white font-bold py-2.5 rounded-xl text-[11px] uppercase tracking-wider transition shadow-lg shadow-brand-red/30">
+                                    <i class="fa-solid fa-file-invoice mr-1"></i> Factura
                                 </button>
-                                <button onclick="openCheckoutModal('BOLETA')" class="bg-brand-800 hover:bg-brand-700 text-white font-bold py-2.5 px-1 rounded-xl text-[11px] uppercase tracking-wider border border-brand-700 transition">
-                                    <i class="fa-solid fa-receipt block mb-1 text-xs"></i> Boleta
+                                <button onclick="openCheckoutModal('BOLETA')" class="bg-brand-800 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-[11px] uppercase tracking-wider border border-brand-700 transition">
+                                    <i class="fa-solid fa-receipt mr-1"></i> Boleta
                                 </button>
-                                <button onclick="openCheckoutModal('TICKET')" class="bg-brand-700 hover:bg-brand-600 text-white font-bold py-2.5 px-1 rounded-xl text-[11px] uppercase tracking-wider transition">
-                                    <i class="fa-solid fa-ticket block mb-1 text-xs"></i> Ticket
+                                <button onclick="openCheckoutModal('TICKET')" class="bg-brand-800 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-[11px] uppercase tracking-wider border border-brand-700 transition">
+                                    <i class="fa-solid fa-ticket mr-1"></i> Ticket
                                 </button>
                             </div>
                         </div>
@@ -238,8 +238,8 @@
                 <section id="tab-inventory" class="tab-content hidden space-y-6">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-brand-900 border border-brand-800 p-6 rounded-2xl shadow-xl">
                         <div>
-                            <h3 class="text-xl font-black text-white uppercase tracking-wider">Gestión de Inventario</h3>
-                            <p class="text-xs text-gray-400 mt-1">RX AURORA COMPANY SAC - Control de stock y precios.</p>
+                            <h3 class="text-xl font-black text-white uppercase tracking-wider">Gestión de Inventario (Stock en 0)</h3>
+                            <p class="text-xs text-gray-400 mt-1">RX AURORA COMPANY SAC • Sincronizado en tiempo real en todos tus dispositivos.</p>
                         </div>
                         <div class="flex items-center gap-3 w-full sm:w-auto">
                             <div class="relative flex-1 sm:w-64">
@@ -280,23 +280,23 @@
                 <section id="tab-sunat" class="tab-content hidden space-y-6">
                     <div class="bg-brand-900 border border-brand-800 p-6 rounded-2xl shadow-xl max-w-3xl mx-auto space-y-6">
                         <div class="border-b border-brand-800 pb-4">
-                            <h3 class="text-xl font-black text-white uppercase tracking-wider">Consulta SUNAT / RENIEC en Vivo</h3>
-                            <p class="text-xs text-gray-400 mt-1">Búsqueda automática mediante API Decolecta.</p>
+                            <h3 class="text-xl font-black text-white uppercase tracking-wider">Consulta en Línea SUNAT & RENIEC</h3>
+                            <p class="text-xs text-gray-400 mt-1">Consulta automática oficial por RUC y DNI con autocompletado instantáneo.</p>
                         </div>
 
                         <div class="space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div>
-                                    <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tipo</label>
+                                    <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tipo de Documento</label>
                                     <select id="sunat-doc-type" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
-                                        <option value="RUC">RUC (11 dígitos)</option>
-                                        <option value="DNI">DNI (8 dígitos)</option>
+                                        <option value="RUC">RUC (Factura)</option>
+                                        <option value="DNI">DNI (Boleta)</option>
                                     </select>
                                 </div>
                                 <div class="sm:col-span-2">
                                     <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Número de Documento</label>
                                     <div class="flex gap-2">
-                                        <input type="text" id="sunat-doc-num" maxlength="11" placeholder="Ingrese número..." class="flex-1 bg-brand-950 border border-brand-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                                        <input type="text" id="sunat-doc-num" maxlength="11" placeholder="Ingrese 8 o 11 dígitos..." class="flex-1 bg-brand-950 border border-brand-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
                                         <button onclick="consultSunatAPI()" class="bg-brand-red hover:bg-brand-redHover text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-brand-red/30 flex items-center space-x-2">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                             <span>Consultar</span>
@@ -308,23 +308,23 @@
                             <div id="sunat-result-box" class="hidden bg-brand-950 border border-brand-800 rounded-xl p-5 space-y-3">
                                 <div class="flex items-center justify-between">
                                     <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider"><i class="fa-solid fa-circle-check mr-1"></i> Contribuyente Encontrado</span>
-                                    <span id="sunat-estado" class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-bold">ACTIVO</span>
+                                    <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-bold">ACTIVO</span>
                                 </div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                                    <div><span class="text-gray-500">Razón Social / Nombres:</span> <p id="sunat-razon-social" class="font-bold text-white text-sm"></p></div>
+                                    <div><span class="text-gray-500">Razón Social / Nombre:</span> <p id="sunat-razon-social" class="font-bold text-white text-sm"></p></div>
                                     <div><span class="text-gray-500">Dirección Fiscal:</span> <p id="sunat-direccion" class="font-bold text-white text-sm"></p></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="border-t border-brand-800 pt-6">
-                            <h4 class="font-bold text-white text-sm uppercase mb-3">Historial de Comprobantes Emitidos</h4>
+                            <h4 class="font-bold text-white text-sm uppercase mb-3">Historial Global de Comprobantes</h4>
                             <div class="bg-brand-950 rounded-xl border border-brand-800 overflow-hidden">
                                 <table class="w-full text-left text-xs">
                                     <thead class="bg-brand-800/50 text-gray-400 uppercase text-[10px]">
                                         <tr>
                                             <th class="p-3">Comprobante</th>
-                                            <th class="p-3">Cliente / Doc</th>
+                                            <th class="p-3">Cliente / RUC</th>
                                             <th class="p-3">Fecha</th>
                                             <th class="p-3 text-right">Total</th>
                                             <th class="p-3 text-center">Acciones</th>
@@ -344,12 +344,13 @@
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-brand-900 border border-brand-800 p-6 rounded-2xl shadow-xl">
                         <div>
                             <h3 class="text-xl font-black text-white uppercase tracking-wider">Reportes & Estadísticas Financieras</h3>
-                            <p class="text-xs text-gray-400 mt-1">RX AURORA COMPANY SAC - Análisis de Ventas, Compras, Fletes y Ganancias.</p>
+                            <p class="text-xs text-gray-400 mt-1">RX AURORA COMPANY SAC • Reportes sincronizados (Diario, Semanal, Mensual, Anual).</p>
                         </div>
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 flex-wrap">
                             <button onclick="renderReports('today')" class="report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-red text-white transition">Hoy</button>
                             <button onclick="renderReports('week')" class="report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-800 text-gray-300 hover:bg-brand-700 transition">Semana</button>
                             <button onclick="renderReports('month')" class="report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-800 text-gray-300 hover:bg-brand-700 transition">Mes</button>
+                            <button onclick="renderReports('year')" class="report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-800 text-gray-300 hover:bg-brand-700 transition">Año</button>
                             <button onclick="renderReports('all')" class="report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-800 text-gray-300 hover:bg-brand-700 transition">Todo</button>
                         </div>
                     </div>
@@ -364,7 +365,7 @@
                         </div>
                         <div class="bg-brand-900 border border-brand-800 rounded-2xl p-5 shadow-xl relative overflow-hidden">
                             <div class="absolute top-0 left-0 bottom-0 w-1 bg-brand-red"></div>
-                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Compras & Gastos</p>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Compras & Gastos / Fletes</p>
                             <h4 id="rep-total-purchases" class="text-2xl font-black text-white mt-2">S/ 0.00</h4>
                             <span class="text-[10px] text-brand-red font-semibold mt-1 block">Inventario y Fletes</span>
                         </div>
@@ -441,21 +442,45 @@
                 <section id="tab-config" class="tab-content hidden space-y-6">
                     <div class="bg-brand-900 border border-brand-800 p-6 rounded-2xl shadow-xl max-w-3xl mx-auto space-y-6">
                         <div class="border-b border-brand-800 pb-4">
-                            <h3 class="text-xl font-black text-white uppercase tracking-wider">Configuración de API SUNAT / RENIEC (Decolecta)</h3>
-                            <p class="text-xs text-gray-400 mt-1">Ingrese su API Key generada para realizar consultas reales.</p>
+                            <h3 class="text-xl font-black text-white uppercase tracking-wider">Configuración de API SUNAT & Clave SOL</h3>
+                            <p class="text-xs text-gray-400 mt-1">Parámetros oficiales de RX AURORA COMPANY SAC para la emisión legal.</p>
                         </div>
 
-                        <div class="space-y-4 text-sm text-gray-300">
-                            <div class="bg-brand-950 p-4 rounded-xl border border-brand-800 space-y-2">
-                                <h4 class="font-bold text-white text-xs uppercase tracking-wider text-brand-red"><i class="fa-solid fa-key mr-1"></i> API Key / Token</h4>
-                                <p class="text-xs text-gray-400">Pegue únicamente el código del token (ej. <code class="text-brand-red">sk_21911...</code>) sin URLs completas.</p>
-                                <input type="text" id="cfg-token" placeholder="sk_21911..." class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red font-mono">
+                        <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
+                            <div class="bg-brand-950 p-4 rounded-xl border border-brand-800 space-y-4">
+                                <h4 class="font-bold text-white text-xs uppercase tracking-wider text-brand-red"><i class="fa-solid fa-key mr-1"></i> Datos Legales Empresa</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1">RUC Empresa</label>
+                                        <input type="text" id="cfg-ruc" value="20616684141" class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2 text-xs text-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1">Razón Social</label>
+                                        <input type="text" id="cfg-razon" value="RX AURORA COMPANY SAC" class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2 text-xs text-white">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1">Dirección Fiscal (Sede)</label>
+                                        <input type="text" id="cfg-dir" value="CALLE LOS HEROES. ASOCIACION GILBER URBIOLA VALER MAZ.D LT.5" class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2 text-xs text-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1">ID SOL (SUNAT)</label>
+                                        <input type="text" id="cfg-sol-user" value="2c799e2a-65bb-4c4c-b6d4-1c4f85aba8c0" class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2 text-xs text-white font-mono">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1">Clave SOL</label>
+                                        <input type="password" id="cfg-sol-pass" value="jVStcaLaxj6+5lwATr0Ujg==" class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2 text-xs text-white font-mono">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1">API Token Consulta RUC/DNI</label>
+                                        <input type="text" id="cfg-api-token" value="jVStcaLaxj6+5lwATr0Ujg==" class="w-full bg-brand-900 border border-brand-700 rounded-lg px-3 py-2 text-xs text-white font-mono">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="pt-4 border-t border-brand-800 flex justify-end">
                             <button onclick="saveSunatConfig()" class="bg-brand-red hover:bg-brand-redHover text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-brand-red/30">
-                                Guardar Token API
+                                Guardar Configuración SUNAT
                             </button>
                         </div>
                     </div>
@@ -473,7 +498,7 @@
                 <button onclick="closeProductModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <form id="product-form" onsubmit="saveProduct(event)" class="p-6 space-y-4">
-                <input type="hidden" id="prod-edit-index" value="-1">
+                <input type="hidden" id="prod-edit-id" value="">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Código</label>
@@ -500,7 +525,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-300 uppercase mb-1">URL de Imagen</label>
-                    <input type="text" id="prod-image" placeholder="https://placehold.co/400x300/141414/dc2626?text=X-WOLX" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
+                    <input type="text" id="prod-image" placeholder="https://..." class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
                 </div>
                 <div class="pt-4 border-t border-brand-800 flex justify-end space-x-3">
                     <button type="button" onclick="closeProductModal()" class="bg-brand-800 text-gray-300 hover:bg-brand-700 px-5 py-2.5 rounded-xl text-xs font-bold uppercase">Cancelar</button>
@@ -514,15 +539,15 @@
     <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
         <div class="w-full max-w-md bg-brand-900 border border-brand-800 rounded-2xl shadow-2xl overflow-hidden p-6 space-y-5">
             <div class="flex justify-between items-center border-b border-brand-800 pb-3">
-                <h3 id="checkout-modal-title" class="font-black text-white text-sm uppercase tracking-wider">Finalizar Venta</h3>
+                <h3 id="checkout-modal-title" class="font-black text-white text-sm uppercase tracking-wider">Finalizar Emisión</h3>
                 <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">RUC (11) o DNI (8)</label>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">RUC (11 dígitos) o DNI (8 dígitos)</label>
                     <div class="flex gap-2">
-                        <input type="text" id="checkout-doc" maxlength="11" placeholder="Número..." class="flex-1 bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
-                        <button onclick="quickSunatCheckout()" class="bg-brand-red hover:bg-brand-redHover text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition flex items-center space-x-1">
+                        <input type="text" id="checkout-doc" placeholder="Número de documento..." class="flex-1 bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
+                        <button onclick="quickSunatCheckout()" class="bg-brand-red hover:bg-brand-redHover text-white px-4 py-2 rounded-xl text-xs font-bold uppercase shadow flex items-center space-x-1">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <span>SUNAT</span>
                         </button>
@@ -530,7 +555,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Razón Social / Nombre Cliente</label>
-                    <input type="text" id="checkout-client" placeholder="CLIENTE FRECUENTE" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red font-bold">
+                    <input type="text" id="checkout-client" placeholder="CLIENTE GENERAL / SE CONECTARÁ AUTOMÁTICAMENTE" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red font-bold">
                 </div>
                 <div class="bg-brand-950 p-4 rounded-xl border border-brand-800 space-y-1 text-xs">
                     <div class="flex justify-between text-gray-400"><span>Monto Total a Pagar:</span> <span id="checkout-modal-total" class="font-black text-white text-base">S/ 0.00</span></div>
@@ -551,9 +576,9 @@
                 <button onclick="closeLogoModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="space-y-4">
-                <p class="text-xs text-gray-400">Ingrese la URL de la imagen de su logo.</p>
+                <p class="text-xs text-gray-400">Ingrese la URL de la imagen de su logo para actualizar instantáneamente el menú y pantallas del sistema en todos sus dispositivos.</p>
                 <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">URL de la Imagen</label>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">URL de la Imagen del Logo</label>
                     <input type="text" id="custom-logo-input" placeholder="https://..." class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
                 </div>
             </div>
@@ -574,7 +599,7 @@
             <form onsubmit="saveExpense(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Concepto / Descripción</label>
-                    <input type="text" id="exp-concept" required placeholder="Ej. Flete / Compra Mercadería" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
+                    <input type="text" id="exp-concept" required placeholder="Ej. Pago de Flete / Compra de Mercadería" class="w-full bg-brand-950 border border-brand-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-red">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Categoría</label>
@@ -590,7 +615,7 @@
                 </div>
                 <div class="pt-2 flex justify-end space-x-3">
                     <button type="button" onclick="closeExpenseModal()" class="bg-brand-800 text-gray-300 px-5 py-2.5 rounded-xl text-xs font-bold uppercase">Cancelar</button>
-                    <button type="submit" class="bg-brand-red hover:bg-brand-redHover text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase shadow-lg shadow-brand-red/30">Registrar</button>
+                    <button type="submit" class="bg-brand-red hover:bg-brand-redHover text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase shadow-lg shadow-brand-red/30">Registrar Gasto</button>
                 </div>
             </form>
         </div>
@@ -599,86 +624,122 @@
     <!-- PRINTABLE RECEIPT HIDDEN TEMPLATE -->
     <div id="printable-receipt" class="hidden"></div>
 
-    <!-- APPLICATION JAVASCRIPT -->
-    <script>
+    <!-- FIREBASE AND APP LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, onSnapshot, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'xwolx-rx-aurora-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyDummyKeyForOfflineFallback999",
+            authDomain: "xwolx-rx-aurora.firebaseapp.com",
+            projectId: "xwolx-rx-aurora"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
         const DEFAULT_PRODUCTS = [
-            { code: "XW114", name: "KIT MOLDURA GR / MANIJAS - VASO - ESPEJO HILUX 2016-2026", stock: 0, buyPrice: 120.00, sellPrice: 180.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW114" },
-            { code: "XW078", name: "KIT MOLDU. FIBRA DE CARBONO HILUX SRV 2021+", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW078" },
-            { code: "XW251", name: "PERILLA GR HILUX 2016-2026", stock: 0, buyPrice: 45.00, sellPrice: 75.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW251" },
-            { code: "XW442", name: "EMBLEMA OE DE MASCARA HILUX 2016-2026", stock: 0, buyPrice: 60.00, sellPrice: 95.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW442" },
-            { code: "XW074", name: "NEBLINEROS HILUX SRV 2021+ GLOSS", stock: 0, buyPrice: 180.00, sellPrice: 270.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW074" },
-            { code: "XW015", name: "NEBLINEROS DRL NEGRO GLOSS HILUX 2021+ C3", stock: 0, buyPrice: 190.00, sellPrice: 290.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW015" },
-            { code: "XW542", name: "TAPAS NEBLINERO DRL GLOS HILUX 2021+ TIPO L", stock: 0, buyPrice: 90.00, sellPrice: 140.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW542" },
-            { code: "XW075", name: "NEBLINEROS DUAL LASER 2\" HILUX - FORTUNER", stock: 0, buyPrice: 210.00, sellPrice: 320.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW075" },
-            { code: "XW165", name: "ESCARPINES GR / SRX", stock: 0, buyPrice: 50.00, sellPrice: 85.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW165" },
-            { code: "XW258", name: "MANIJA LARGA DE SALON HILUX REVO RH", stock: 0, buyPrice: 40.00, sellPrice: 70.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW258" },
-            { code: "XW259", name: "MANIJA LARGA DE SALON HILUX REVO LH", stock: 0, buyPrice: 40.00, sellPrice: 70.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW259" },
-            { code: "XW492", name: "LETRA SRV", stock: 0, buyPrice: 35.00, sellPrice: 60.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW492" },
-            { code: "XW683", name: "LETRA - FORTUNER - CAP", stock: 0, buyPrice: 35.00, sellPrice: 60.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW683" },
-            { code: "XW123", name: "ESTRIBO L200 TRITON OFF ROAD", stock: 0, buyPrice: 350.00, sellPrice: 520.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW123" },
-            { code: "XW124", name: "ESTRIBO NISSAN NP300 OFF ROAD", stock: 0, buyPrice: 350.00, sellPrice: 520.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW124" },
-            { code: "XW559", name: "ESTRIBO OFF ROAD HILUX 2016-2026 C/N MALLA", stock: 0, buyPrice: 380.00, sellPrice: 560.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW559" },
-            { code: "XW675", name: "ESTRIBO HILUX REVO OEM 1.8 P", stock: 0, buyPrice: 340.00, sellPrice: 490.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW675" },
-            { code: "XW046", name: "PARACHOQUE POST. HILUX 2016 - 2026 REFORZADO", stock: 0, buyPrice: 420.00, sellPrice: 620.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW046" },
-            { code: "XW421", name: "DEFENSA CROMO GRILLETE C/LED HILUX 2016+", stock: 0, buyPrice: 450.00, sellPrice: 680.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW421" },
-            { code: "XW418", name: "DEFENSA CROMO DOBLE TUBO C/LED HILUX 2016+", stock: 0, buyPrice: 460.00, sellPrice: 690.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW418" },
-            { code: "XW419", name: "DEFENSA NEGRO DOBLE TUBO C/LED HILUX 2016+", stock: 0, buyPrice: 460.00, sellPrice: 690.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW419" },
-            { code: "XW132", name: "ANTIVUELCO CROMO 4X4", stock: 0, buyPrice: 390.00, sellPrice: 580.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW132" },
-            { code: "XW131", name: "ANTIVUELCO NEGRO 4X4", stock: 0, buyPrice: 390.00, sellPrice: 580.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW131" },
-            { code: "XW424", name: "ANTIVUELCO CROMO 4X4 C/ LED", stock: 0, buyPrice: 440.00, sellPrice: 650.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW424" },
-            { code: "XW042", name: "ANTIVUELCO Z CROMO 4X4", stock: 0, buyPrice: 410.00, sellPrice: 610.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW042" },
-            { code: "XW043", name: "ANTIVUELCO Z NEGRO 4X4", stock: 0, buyPrice: 410.00, sellPrice: 610.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW043" },
-            { code: "XW669", name: "ANTIV. HAMER NEGRO C/ CUBOS LED 2.0", stock: 0, buyPrice: 480.00, sellPrice: 720.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW669" },
-            { code: "XW198", name: "ANTI. HAMER NEGRO C/ CANASTILLA 2.0", stock: 0, buyPrice: 520.00, sellPrice: 780.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW198" },
-            { code: "XW053", name: "PROTECTOR DE CARTER GR REVO", stock: 0, buyPrice: 130.00, sellPrice: 195.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW053" },
-            { code: "XW119", name: "PROTECTOR DE CARTER COMP/ HILUX 2016+", stock: 0, buyPrice: 145.00, sellPrice: 220.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW119" },
-            { code: "XW021", name: "KIT DE ELEVACION HILUX 2016-2025", stock: 0, buyPrice: 280.00, sellPrice: 420.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW021" },
-            { code: "XW688", name: "SUPLES 1.5\" 6x139.7 - x4 UNID", stock: 0, buyPrice: 160.00, sellPrice: 240.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW688" },
-            { code: "XW155", name: "LONA MARITIMA HILUX 2016+", stock: 0, buyPrice: 290.00, sellPrice: 440.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW155" },
-            { code: "XW270", name: "TAPA RETRACTIL MANUAL HILUX 2016 - 2026", stock: 0, buyPrice: 1200.00, sellPrice: 1750.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW270" },
-            { code: "XW373", name: "FARO POST LED HILUX VIGO ROJO (PAR)", stock: 0, buyPrice: 220.00, sellPrice: 330.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW373" },
-            { code: "XW032", name: "FARO POST LED OEM HILUX 2016+ (PAR) THAI", stock: 0, buyPrice: 230.00, sellPrice: 340.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW032" },
-            { code: "XW036", name: "FARO DEL. LED CROMO HILUX 2021+ (PAR) THAI", stock: 0, buyPrice: 310.00, sellPrice: 460.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW036" },
-            { code: "XW013", name: "FARO DEL. TRI LED GR HILUX 2021-2026", stock: 0, buyPrice: 380.00, sellPrice: 570.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW013" },
-            { code: "XW203", name: "MASCARA DEL. TOYOT GR GLOS HILUX 2021+ C/ BISEL", stock: 0, buyPrice: 240.00, sellPrice: 360.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW203" },
-            { code: "XW020", name: "MASCARA GR FIBRA DE CARBONO C/ BISEL HILUX 2021+", stock: 0, buyPrice: 260.00, sellPrice: 390.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW020" },
-            { code: "XW620", name: "MOLDURAS DE CAPOT LAT GR HILUX 21+", stock: 0, buyPrice: 95.00, sellPrice: 150.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW620" },
-            { code: "XW138", name: "MOLDURA GR DE COMPUERTA HILUX 2016-2026", stock: 0, buyPrice: 110.00, sellPrice: 170.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW138" },
-            { code: "XW677", name: "MOLDURA GR FIBRA DE COMPUERTA HILUX 2016-2026", stock: 0, buyPrice: 130.00, sellPrice: 195.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW677" },
-            { code: "XW680", name: "MOLDURA GR FORJADO DE COMPUERTA HILUX 2016-2026", stock: 0, buyPrice: 140.00, sellPrice: 210.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW680" },
-            { code: "XW433-A", name: "DEFLECTOR DE TECHO C/ LED 2.0 HILUX 2016-2026", stock: 0, buyPrice: 210.00, sellPrice: 310.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW433-A" },
-            { code: "XW267", name: "BARRA LATERAL TECHO HILUX 2016 - 2026 PLATA", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW267" },
-            { code: "XW283", name: "BUMPER GR HILUX 2021+", stock: 0, buyPrice: 480.00, sellPrice: 720.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW283" },
-            { code: "XW411-A", name: "MOLDURA LATERAL OFF ROAD GR 2.0 REVO 2016+", stock: 0, buyPrice: 170.00, sellPrice: 260.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW411-A" },
-            { code: "XW411", name: "MOLDURA LATERAL OFF ROAD GR REVO 2016+", stock: 0, buyPrice: 160.00, sellPrice: 240.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW411" },
-            { code: "XW676", name: "MOLDURA LATERAL - HILUX - REVO 2016+", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW676" },
-            { code: "XW529", name: "PROTECTOR PISADERAS HILUX FIBRA DE CARBONO 2016 - 2026", stock: 0, buyPrice: 110.00, sellPrice: 170.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW529" },
-            { code: "XW580", name: "PROTECTOR PISADERAS HILUX GR FIBRA DE CARBONO 2026", stock: 0, buyPrice: 120.00, sellPrice: 180.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW580" },
-            { code: "XW080", name: "CORRELLUVIAS FIBRA DE CARBONO HILUX 2016 - 2026", stock: 0, buyPrice: 65.00, sellPrice: 105.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW080" },
-            { code: "XW143", name: "CORRELLUVIAS CROMO HILUX 2016 - 2026", stock: 0, buyPrice: 60.00, sellPrice: 95.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW143" },
-            { code: "XW142", name: "FENDER HILUX VIGO OFF ROAD 2005 - 2014", stock: 0, buyPrice: 210.00, sellPrice: 315.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW142" },
-            { code: "XW099", name: "FENDER GR HILUX 2021+", stock: 0, buyPrice: 230.00, sellPrice: 345.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW099" },
-            { code: "XW090", name: "KIT DE MOLDURAS INT. FIBRA GR HILUX 2016-2026", stock: 0, buyPrice: 140.00, sellPrice: 210.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW090" }
+            { id: "XW114", code: "XW114", name: "KIT MOLDURA GR / MANIJAS - VASO - ESPEJO HILUX 2016-2026", stock: 0, buyPrice: 120.00, sellPrice: 180.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW114" },
+            { id: "XW078", code: "XW078", name: "KIT MOLDU. FIBRA DE CARBONO HILUX SRV 2021+", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW078" },
+            { id: "XW251", code: "XW251", name: "PERILLA GR HILUX 2016-2026", stock: 0, buyPrice: 45.00, sellPrice: 75.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW251" },
+            { id: "XW442", code: "XW442", name: "EMBLEMA OE DE MASCARA HILUX 2016-2026", stock: 0, buyPrice: 60.00, sellPrice: 95.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW442" },
+            { id: "XW074", code: "XW074", name: "NEBLINEROS HILUX SRV 2021+ GLOSS", stock: 0, buyPrice: 180.00, sellPrice: 270.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW074" },
+            { id: "XW015", code: "XW015", name: "NEBLINEROS DRL NEGRO GLOSS HILUX 2021+ C3", stock: 0, buyPrice: 190.00, sellPrice: 290.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW015" },
+            { id: "XW542", code: "XW542", name: "TAPAS NEBLINERO DRL GLOS HILUX 2021+ TIPO L", stock: 0, buyPrice: 90.00, sellPrice: 140.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW542" },
+            { id: "XW075", code: "XW075", name: "NEBLINEROS DUAL LASER 2\" HILUX - FORTUNER", stock: 0, buyPrice: 210.00, sellPrice: 320.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW075" },
+            { id: "XW165", code: "XW165", name: "ESCARPINES GR / SRX", stock: 0, buyPrice: 50.00, sellPrice: 85.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW165" },
+            { id: "XW258", code: "XW258", name: "MANIJA LARGA DE SALON HILUX REVO RH", stock: 0, buyPrice: 40.00, sellPrice: 70.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW258" },
+            { id: "XW259", code: "XW259", name: "MANIJA LARGA DE SALON HILUX REVO LH", stock: 0, buyPrice: 40.00, sellPrice: 70.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW259" },
+            { id: "XW492", code: "XW492", name: "LETRA SRV", stock: 0, buyPrice: 35.00, sellPrice: 60.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW492" },
+            { id: "XW683", code: "XW683", name: "LETRA - FORTUNER - CAP", stock: 0, buyPrice: 35.00, sellPrice: 60.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW683" },
+            { id: "XW123", code: "XW123", name: "ESTRIBO L200 TRITON OFF ROAD", stock: 0, buyPrice: 350.00, sellPrice: 520.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW123" },
+            { id: "XW124", code: "XW124", name: "ESTRIBO NISSAN NP300 OFF ROAD", stock: 0, buyPrice: 350.00, sellPrice: 520.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW124" },
+            { id: "XW559", code: "XW559", name: "ESTRIBO OFF ROAD HILUX 2016-2026 C/N MALLA", stock: 0, buyPrice: 380.00, sellPrice: 560.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW559" },
+            { id: "XW675", code: "XW675", name: "ESTRIBO HILUX REVO OEM 1.8 P", stock: 0, buyPrice: 340.00, sellPrice: 490.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW675" },
+            { id: "XW046", code: "XW046", name: "PARACHOQUE POST. HILUX 2016 - 2026 REFORZADO", stock: 0, buyPrice: 420.00, sellPrice: 620.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW046" },
+            { id: "XW421", code: "XW421", name: "DEFENSA CROMO GRILLETE C/LED HILUX 2016+", stock: 0, buyPrice: 450.00, sellPrice: 680.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW421" },
+            { id: "XW418", code: "XW418", name: "DEFENSA CROMO DOBLE TUBO C/LED HILUX 2016+", stock: 0, buyPrice: 460.00, sellPrice: 690.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW418" },
+            { id: "XW419", code: "XW419", name: "DEFENSA NEGRO DOBLE TUBO C/LED HILUX 2016+", stock: 0, buyPrice: 460.00, sellPrice: 690.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW419" },
+            { id: "XW132", code: "XW132", name: "ANTIVUELCO CROMO 4X4", stock: 0, buyPrice: 390.00, sellPrice: 580.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW132" },
+            { id: "XW131", code: "XW131", name: "ANTIVUELCO NEGRO 4X4", stock: 0, buyPrice: 390.00, sellPrice: 580.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW131" },
+            { id: "XW424", code: "XW424", name: "ANTIVUELCO CROMO 4X4 C/ LED", stock: 0, buyPrice: 440.00, sellPrice: 650.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW424" },
+            { id: "XW042", code: "XW042", name: "ANTIVUELCO Z CROMO 4X4", stock: 0, buyPrice: 410.00, sellPrice: 610.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW042" },
+            { id: "XW043", code: "XW043", name: "ANTIVUELCO Z NEGRO 4X4", stock: 0, buyPrice: 410.00, sellPrice: 610.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW043" },
+            { id: "XW669", code: "XW669", name: "ANTIV. HAMER NEGRO C/ CUBOS LED 2.0", stock: 0, buyPrice: 480.00, sellPrice: 720.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW669" },
+            { id: "XW198", code: "XW198", name: "ANTI. HAMER NEGRO C/ CANASTILLA 2.0", stock: 0, buyPrice: 520.00, sellPrice: 780.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW198" },
+            { id: "XW053", code: "XW053", name: "PROTECTOR DE CARTER GR REVO", stock: 0, buyPrice: 130.00, sellPrice: 195.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW053" },
+            { id: "XW119", code: "XW119", name: "PROTECTOR DE CARTER COMP/ HILUX 2016+", stock: 0, buyPrice: 145.00, sellPrice: 220.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW119" },
+            { id: "XW021", code: "XW021", name: "KIT DE ELEVACION HILUX 2016-2025", stock: 0, buyPrice: 280.00, sellPrice: 420.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW021" },
+            { id: "XW688", code: "XW688", name: "SUPLES 1.5\" 6x139.7 - x4 UNID", stock: 0, buyPrice: 160.00, sellPrice: 240.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW688" },
+            { id: "XW155", code: "XW155", name: "LONA MARITIMA HILUX 2016+", stock: 0, buyPrice: 290.00, sellPrice: 440.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW155" },
+            { id: "XW270", code: "XW270", name: "TAPA RETRACTIL MANUAL HILUX 2016 - 2026", stock: 0, buyPrice: 1200.00, sellPrice: 1750.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW270" },
+            { id: "XW373", code: "XW373", name: "FARO POST LED HILUX VIGO ROJO (PAR)", stock: 0, buyPrice: 220.00, sellPrice: 330.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW373" },
+            { id: "XW032", code: "XW032", name: "FARO POST LED OEM HILUX 2016+ (PAR) THAI", stock: 0, buyPrice: 230.00, sellPrice: 340.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW032" },
+            { id: "XW036", code: "XW036", name: "FARO DEL. LED CROMO HILUX 2021+ (PAR) THAI", stock: 0, buyPrice: 310.00, sellPrice: 460.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW036" },
+            { id: "XW013", code: "XW013", name: "FARO DEL. TRI LED GR HILUX 2021-2026", stock: 0, buyPrice: 380.00, sellPrice: 570.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW013" },
+            { id: "XW203", code: "XW203", name: "MASCARA DEL. TOYOT GR GLOS HILUX 2021+ C/ BISEL", stock: 0, buyPrice: 240.00, sellPrice: 360.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW203" },
+            { id: "XW020", code: "XW020", name: "MASCARA GR FIBRA DE CARBONO C/ BISEL HILUX 2021+", stock: 0, buyPrice: 260.00, sellPrice: 390.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW020" },
+            { id: "XW620", code: "XW620", name: "MOLDURAS DE CAPOT LAT GR HILUX 21+", stock: 0, buyPrice: 95.00, sellPrice: 150.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW620" },
+            { id: "XW138", code: "XW138", name: "MOLDURA GR DE COMPUERTA HILUX 2016-2026", stock: 0, buyPrice: 110.00, sellPrice: 170.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW138" },
+            { id: "XW677", code: "XW677", name: "MOLDURA GR FIBRA DE COMPUERTA HILUX 2016-2026", stock: 0, buyPrice: 130.00, sellPrice: 195.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW677" },
+            { id: "XW680", code: "XW680", name: "MOLDURA GR FORJADO DE COMPUERTA HILUX 2016-2026", stock: 0, buyPrice: 140.00, sellPrice: 210.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW680" },
+            { id: "XW433-A", code: "XW433-A", name: "DEFLECTOR DE TECHO C/ LED 2.0 HILUX 2016-2026", stock: 0, buyPrice: 210.00, sellPrice: 310.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW433-A" },
+            { id: "XW267", code: "XW267", name: "BARRA LATERAL TECHO HILUX 2016 - 2026 PLATA", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW267" },
+            { id: "XW283", code: "XW283", name: "BUMPER GR HILUX 2021+", stock: 0, buyPrice: 480.00, sellPrice: 720.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW283" },
+            { id: "XW411-A", code: "XW411-A", name: "MOLDURA LATERAL OFF ROAD GR 2.0 REVO 2016+", stock: 0, buyPrice: 170.00, sellPrice: 260.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW411-A" },
+            { id: "XW411", code: "XW411", name: "MOLDURA LATERAL OFF ROAD GR REVO 2016+", stock: 0, buyPrice: 160.00, sellPrice: 240.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW411" },
+            { id: "XW676", code: "XW676", name: "MOLDURA LATERAL - HILUX - REVO 2016+", stock: 0, buyPrice: 150.00, sellPrice: 230.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW676" },
+            { id: "XW529", code: "XW529", name: "PROTECTOR PISADERAS HILUX FIBRA DE CARBONO 2016 - 2026", stock: 0, buyPrice: 110.00, sellPrice: 170.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW529" },
+            { id: "XW580", code: "XW580", name: "PROTECTOR PISADERAS HILUX GR FIBRA DE CARBONO 2026", stock: 0, buyPrice: 120.00, sellPrice: 180.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW580" },
+            { id: "XW080", code: "XW080", name: "CORRELLUVIAS FIBRA DE CARBONO HILUX 2016 - 2026", stock: 0, buyPrice: 65.00, sellPrice: 105.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW080" },
+            { id: "XW143", code: "XW143", name: "CORRELLUVIAS CROMO HILUX 2016 - 2026", stock: 0, buyPrice: 60.00, sellPrice: 95.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW143" },
+            { id: "XW142", code: "XW142", name: "FENDER HILUX VIGO OFF ROAD 2005 - 2014", stock: 0, buyPrice: 210.00, sellPrice: 315.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW142" },
+            { id: "XW099", code: "XW099", name: "FENDER GR HILUX 2021+", stock: 0, buyPrice: 230.00, sellPrice: 345.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW099" },
+            { id: "XW090", code: "XW090", name: "KIT DE MOLDURAS INT. FIBRA GR HILUX 2016-2026", stock: 0, buyPrice: 140.00, sellPrice: 210.00, image: "https://placehold.co/400x300/141414/dc2626?text=XW090" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('xw_products')) || DEFAULT_PRODUCTS;
+        let products = [];
         let cart = [];
-        let salesHistory = JSON.parse(localStorage.getItem('xw_sales')) || [];
-        let expensesList = JSON.parse(localStorage.getItem('xw_expenses')) || [];
-        let customLogo = localStorage.getItem('xw_logo') || '';
-        let apiToken = localStorage.getItem('xw_apitoken') || 'sk_21911.3VmwV1LDg4OaSxC3K4saGnIflkC19swj';
+        let salesHistory = [];
+        let expensesList = [];
+        let customLogo = '';
+        let sunatConfig = {
+            ruc: '20616684141',
+            razon: 'RX AURORA COMPANY SAC',
+            dir: 'CALLE LOS HEROES. ASOCIACION GILBER URBIOLA VALER MAZ.D LT.5',
+            user: '2c799e2a-65bb-4c4c-b6d4-1c4f85aba8c0',
+            pass: 'jVStcaLaxj6+5lwATr0Ujg==',
+            token: 'jVStcaLaxj6+5lwATr0Ujg=='
+        };
+
+        async function initFirebase() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                document.getElementById('sync-status-text').textContent = 'Cloud Sincronizado';
+                document.getElementById('sync-status-icon').className = 'fa-solid fa-cloud text-emerald-500';
+                startRealtimeListeners();
+            } catch (e) {
+                console.warn('Firebase Auth Fallback:', e);
+                document.getElementById('sync-status-text').textContent = 'Modo Local Offline';
+                document.getElementById('sync-status-icon').className = 'fa-solid fa-cloud text-amber-500';
+                loadLocalFallback();
+            }
+        }
 
         window.onload = function() {
             checkAuthSession();
-            applyCustomLogo();
-            document.getElementById('cfg-token').value = apiToken;
-            renderPosCatalog();
-            renderInventoryTable();
-            renderSunatHistory();
-            renderReports('today');
+            initFirebase();
+            loadSunatConfigUI();
         };
 
-        function handleLogin(e) {
+        window.handleLogin = function(e) {
             e.preventDefault();
             const u = document.getElementById('login-user').value.trim();
             const p = document.getElementById('login-pass').value.trim();
@@ -689,10 +750,10 @@
                 document.getElementById('login-screen').classList.add('hidden');
                 document.getElementById('app-container').classList.remove('hidden');
             } else {
-                err.textContent = 'Usuario o contraseña incorrectos.';
+                err.textContent = 'Usuario o contraseña incorrectos. Verifique sus credenciales.';
                 err.classList.remove('hidden');
             }
-        }
+        };
 
         function checkAuthSession() {
             if (sessionStorage.getItem('xw_auth') === 'true') {
@@ -701,12 +762,12 @@
             }
         }
 
-        function handleLogout() {
+        window.handleLogout = function() {
             sessionStorage.removeItem('xw_auth');
             location.reload();
-        }
+        };
 
-        function switchTab(tabId) {
+        window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
 
@@ -719,109 +780,173 @@
                 activeBtn.classList.add('bg-brand-red', 'text-white', 'shadow-lg', 'shadow-brand-red/20');
                 activeBtn.classList.remove('text-gray-400', 'hover:bg-brand-800', 'hover:text-white');
             }
-        }
 
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('hidden');
-        }
+            const titles = {
+                'pos': 'Punto de Venta (POS)',
+                'inventory': 'Gestión de Inventario',
+                'sunat': 'Facturación y Boletas SUNAT',
+                'reports': 'Reportes & Estadísticas Financieras',
+                'config': 'Configuración API SUNAT & SOL'
+            };
+            document.getElementById('current-tab-title').textContent = titles[tabId] || 'X-WOLX Sistema';
+        };
 
-        function openLogoModal() {
+        window.toggleSidebar = function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        };
+
+        window.openLogoModal = function() {
             document.getElementById('custom-logo-input').value = customLogo;
             document.getElementById('logo-modal').classList.remove('hidden');
-        }
-        function closeLogoModal() {
+        };
+        window.closeLogoModal = function() {
             document.getElementById('logo-modal').classList.add('hidden');
-        }
-        function saveCustomLogo() {
-            customLogo = document.getElementById('custom-logo-input').value.trim();
-            localStorage.setItem('xw_logo', customLogo);
+        };
+        window.saveCustomLogo = async function() {
+            const url = document.getElementById('custom-logo-input').value.trim();
+            customLogo = url;
             applyCustomLogo();
             closeLogoModal();
-        }
+
+            if (auth.currentUser) {
+                try {
+                    const cfgRef = doc(db, 'artifacts', appId, 'public', 'data', 'config', 'settings');
+                    await setDoc(cfgRef, { logo: url, sunatConfig }, { merge: true });
+                } catch(e) { console.error(e); }
+            }
+        };
+
         function applyCustomLogo() {
             const wrap = document.getElementById('sidebar-logo-wrap');
             const loginLogo = document.getElementById('login-logo-container');
             if (customLogo) {
-                wrap.innerHTML = `<img src="${customLogo}" class="w-full h-full object-cover">`;
-                loginLogo.innerHTML = `<img src="${customLogo}" class="w-full h-full object-cover">`;
+                wrap.innerHTML = `<img src="${customLogo}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/141414/dc2626?text=XW'">`;
+                loginLogo.innerHTML = `<img src="${customLogo}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/141414/dc2626?text=XW'">`;
+            } else {
+                wrap.innerHTML = `<span class="text-sm font-black text-brand-red">XW</span>`;
+                loginLogo.innerHTML = `<span class="text-2xl font-black text-brand-red tracking-wider">X-WOLX</span>`;
             }
         }
 
-        function saveData() {
+        function startRealtimeListeners() {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'products'), (snapshot) => {
+                products = [];
+                snapshot.forEach(docSnap => {
+                    products.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                if (products.length === 0) {
+                    DEFAULT_PRODUCTS.forEach(async (p) => {
+                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', p.id), p);
+                    });
+                } else {
+                    renderPosCatalog();
+                    renderInventoryTable();
+                    renderReports('today');
+                }
+            }, (err) => console.error(err));
+
+            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'sales'), (snapshot) => {
+                salesHistory = [];
+                snapshot.forEach(docSnap => {
+                    salesHistory.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                salesHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
+                renderSunatHistory();
+                renderReports('today');
+            }, (err) => console.error(err));
+
+            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'expenses'), (snapshot) => {
+                expensesList = [];
+                snapshot.forEach(docSnap => {
+                    expensesList.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                expensesList.sort((a, b) => new Date(b.date) - new Date(a.date));
+                renderReports('today');
+            }, (err) => console.error(err));
+
+            onSnapshot(doc(db, 'artifacts', appId, 'public', 'data', 'config', 'settings'), (docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if (data.logo) {
+                        customLogo = data.logo;
+                        applyCustomLogo();
+                    }
+                    if (data.sunatConfig) {
+                        sunatConfig = data.sunatConfig;
+                        loadSunatConfigUI();
+                    }
+                }
+            }, (err) => console.error(err));
+        }
+
+        function loadLocalFallback() {
+            products = JSON.parse(localStorage.getItem('xw_products')) || DEFAULT_PRODUCTS;
+            salesHistory = JSON.parse(localStorage.getItem('xw_sales')) || [];
+            expensesList = JSON.parse(localStorage.getItem('xw_expenses')) || [];
+            customLogo = localStorage.getItem('xw_logo') || '';
+            const savedCfg = localStorage.getItem('xw_sunat_cfg');
+            if (savedCfg) sunatConfig = JSON.parse(savedCfg);
+
+            applyCustomLogo();
+            loadSunatConfigUI();
+            renderPosCatalog();
+            renderInventoryTable();
+            renderSunatHistory();
+            renderReports('today');
+        }
+
+        function saveLocalData() {
             localStorage.setItem('xw_products', JSON.stringify(products));
             localStorage.setItem('xw_sales', JSON.stringify(salesHistory));
             localStorage.setItem('xw_expenses', JSON.stringify(expensesList));
+            localStorage.setItem('xw_logo', customLogo);
+            localStorage.setItem('xw_sunat_cfg', JSON.stringify(sunatConfig));
         }
 
-        function saveSunatConfig() {
-            apiToken = document.getElementById('cfg-token').value.trim();
-            localStorage.setItem('xw_apitoken', apiToken);
-            alert('¡Token API guardado correctamente!');
+        function loadSunatConfigUI() {
+            document.getElementById('cfg-ruc').value = sunatConfig.ruc || '20616684141';
+            document.getElementById('cfg-razon').value = sunatConfig.razon || 'RX AURORA COMPANY SAC';
+            document.getElementById('cfg-dir').value = sunatConfig.dir || 'CALLE LOS HEROES. ASOCIACION GILBER URBIOLA VALER MAZ.D LT.5';
+            document.getElementById('cfg-sol-user').value = sunatConfig.user || '2c799e2a-65bb-4c4c-b6d4-1c4f85aba8c0';
+            document.getElementById('cfg-sol-pass').value = sunatConfig.pass || 'jVStcaLaxj6+5lwATr0Ujg==';
+            document.getElementById('cfg-api-token').value = sunatConfig.token || 'jVStcaLaxj6+5lwATr0Ujg==';
         }
 
-        // REAL API DECOLECTA CONSULT
-        async function fetchSunatRucDni(numero) {
-            const num = numero.trim();
-            if (!num) return null;
+        window.saveSunatConfig = async function() {
+            sunatConfig = {
+                ruc: document.getElementById('cfg-ruc').value.trim(),
+                razon: document.getElementById('cfg-razon').value.trim(),
+                dir: document.getElementById('cfg-dir').value.trim(),
+                user: document.getElementById('cfg-sol-user').value.trim(),
+                pass: document.getElementById('cfg-sol-pass').value.trim(),
+                token: document.getElementById('cfg-api-token').value.trim()
+            };
+            saveLocalData();
 
-            let endpoint = '';
-            if (num.length === 11) {
-                endpoint = `https://api.decolecta.com/v1/sunat/ruc?numero=${num}`;
-            } else if (num.length === 8) {
-                endpoint = `https://api.decolecta.com/v1/reniec/dni?numero=${num}`;
-            } else {
-                alert('Ingrese un número de DNI (8 dígitos) o RUC (11 dígitos) válido.');
-                return null;
+            if (auth.currentUser) {
+                try {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'config', 'settings'), { sunatConfig }, { merge: true });
+                } catch(e) { console.error(e); }
             }
+            alert('¡Configuración de RX AURORA COMPANY SAC guardada y sincronizada en todos tus dispositivos!');
+        };
 
-            try {
-                const res = await fetch(endpoint, {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': `Bearer ${apiToken}`
-                    }
-                });
-                if (!res.ok) throw new Error('Error al consultar la API');
-                const data = await res.json();
-                return data;
-            } catch (err) {
-                console.error(err);
-                alert('No se pudo conectar con la API o el Token es inválido.');
-                return null;
-            }
-        }
-
-        async function consultSunatAPI() {
-            const num = document.getElementById('sunat-doc-num').value.trim();
-            const data = await fetchSunatRucDni(num);
-            if (!data) return;
-
-            const box = document.getElementById('sunat-result-box');
-            box.classList.remove('hidden');
-
-            let nombre = data.razonSocial || data.nombreCompleto || data.nombres + ' ' + data.apellidoPaterno + ' ' + data.apellidoMaterno || 'CONTRIBUYENTE';
-            let direccion = data.direccion || data.domicilioFiscal || 'DIRECCIÓN NO ESPECIFICADA';
-
-            document.getElementById('sunat-razon-social').textContent = nombre;
-            document.getElementById('sunat-direccion').textContent = direccion;
-        }
-
-        async function quickSunatCheckout() {
-            const num = document.getElementById('checkout-doc').value.trim();
-            const data = await fetchSunatRucDni(num);
-            if (data) {
-                let nombre = data.razonSocial || data.nombreCompleto || (data.nombres ? `${data.nombres} ${data.apellidoPaterno || ''} ${data.apellidoMaterno || ''}` : 'CLIENTE');
-                document.getElementById('checkout-client').value = nombre;
-            }
-        }
-
-        function renderPosCatalog() {
+        window.renderPosCatalog = function() {
             const query = (document.getElementById('pos-search').value || '').toLowerCase();
             const grid = document.getElementById('pos-product-grid');
             grid.innerHTML = '';
 
             const filtered = products.filter(p => p.code.toLowerCase().includes(query) || p.name.toLowerCase().includes(query));
             document.getElementById('pos-product-count').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 text-xs">No se encontraron productos</div>`;
+                return;
+            }
 
             filtered.forEach(p => {
                 const card = document.createElement('div');
@@ -832,41 +957,51 @@
                     <div>
                         <div class="w-full h-36 rounded-xl bg-brand-950 overflow-hidden mb-3 border border-brand-800 relative">
                             <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/400x300/141414/dc2626?text=X-WOLX'">
-                            <span class="absolute top-2 right-2 bg-black/80 text-[10px] font-black text-white px-2 py-0.5 rounded-lg border border-brand-700">${p.code}</span>
+                            <span class="absolute top-2 right-2 bg-black/80 backdrop-blur text-[10px] font-black text-white px-2 py-0.5 rounded-lg border border-brand-700">${p.code}</span>
                             <span class="absolute bottom-2 left-2 ${p.stock > 0 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30'} text-[10px] font-bold px-2 py-0.5 rounded-lg border">Stock: ${p.stock}</span>
                         </div>
                         <h4 class="font-bold text-xs text-white line-clamp-2 mb-2">${p.name}</h4>
                     </div>
                     <div class="flex items-center justify-between pt-2 border-t border-brand-800">
-                        <span class="text-xs font-black text-brand-red">S/ ${p.sellPrice.toFixed(2)}</span>
+                        <span class="text-xs font-black text-brand-red">S/ ${parseFloat(p.sellPrice).toFixed(2)}</span>
                         <span class="w-7 h-7 rounded-lg bg-brand-red/20 text-brand-red flex items-center justify-center text-xs group-hover:bg-brand-red group-hover:text-white transition"><i class="fa-solid fa-plus"></i></span>
                     </div>
                 `;
                 grid.appendChild(card);
             });
-        }
+        };
 
-        function addToCart(code) {
+        window.addToCart = function(code) {
             const product = products.find(p => p.code === code);
             if (!product) return;
+
             const existing = cart.find(item => item.code === code);
             if (existing) {
                 existing.quantity += 1;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cart.push({
+                    code: product.code,
+                    name: product.name,
+                    buyPrice: parseFloat(product.buyPrice),
+                    sellPrice: parseFloat(product.sellPrice),
+                    quantity: 1,
+                    stock: product.stock
+                });
             }
             renderCart();
-        }
+        };
 
-        function updateCartQuantity(code, delta) {
+        window.updateCartQuantity = function(code, delta) {
             const item = cart.find(i => i.code === code);
             if (!item) return;
             item.quantity += delta;
-            if (item.quantity <= 0) cart = cart.filter(i => i.code !== code);
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.code !== code);
+            }
             renderCart();
-        }
+        };
 
-        function updateCartPrice(code, newPrice) {
+        window.updateCartPrice = function(code, newPrice) {
             const item = cart.find(i => i.code === code);
             if (!item) return;
             const parsed = parseFloat(newPrice);
@@ -874,19 +1009,24 @@
                 item.sellPrice = parsed;
                 renderCartTotals();
             }
-        }
+        };
 
-        function clearCart() {
+        window.clearCart = function() {
             cart = [];
             renderCart();
-        }
+        };
 
         function renderCart() {
             const container = document.getElementById('cart-items-container');
             container.innerHTML = '';
 
             if (cart.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-gray-500"><i class="fa-solid fa-basket-shopping text-3xl mb-2"></i><p class="text-xs font-semibold">El carrito está vacío</p></div>`;
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-basket-shopping text-3xl mb-2"></i>
+                        <p class="text-xs font-semibold">El carrito está vacío</p>
+                    </div>
+                `;
                 renderCartTotals();
                 return;
             }
@@ -909,7 +1049,7 @@
                             <button onclick="updateCartQuantity('${item.code}', 1)" class="w-6 h-6 rounded bg-brand-800 text-white font-bold flex items-center justify-center">+</button>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <span class="text-[10px] text-gray-400">P.U S/:</span>
+                            <span class="text-[10px] text-gray-400">P. Unit S/:</span>
                             <input type="number" step="0.01" value="${item.sellPrice.toFixed(2)}" onchange="updateCartPrice('${item.code}', this.value)" class="w-20 bg-brand-900 border border-brand-700 rounded px-2 py-1 text-xs text-right font-bold text-white focus:outline-none focus:border-brand-red">
                         </div>
                     </div>
@@ -921,28 +1061,43 @@
 
         function renderCartTotals() {
             let subtotal = cart.reduce((acc, item) => acc + (item.sellPrice * item.quantity), 0);
+            let igv = subtotal * 0.18;
+            let total = subtotal;
+
             document.getElementById('cart-subtotal').textContent = `S/ ${(subtotal / 1.18).toFixed(2)}`;
             document.getElementById('cart-igv').textContent = `S/ ${(subtotal - (subtotal / 1.18)).toFixed(2)}`;
-            document.getElementById('cart-total').textContent = `S/ ${subtotal.toFixed(2)}`;
+            document.getElementById('cart-total').textContent = `S/ ${total.toFixed(2)}`;
         }
 
         let currentCheckoutType = 'FACTURA';
-        function openCheckoutModal(type) {
+        window.openCheckoutModal = function(type) {
             if (cart.length === 0) {
-                alert('El carrito está vacío.');
+                alert('El carrito está vacío. Agregue productos antes de cobrar.');
                 return;
             }
             currentCheckoutType = type;
             document.getElementById('checkout-modal-title').textContent = `Finalizar Emisión - ${type}`;
+            document.getElementById('checkout-doc').value = type === 'TICKET' ? '00000000' : '';
+            document.getElementById('checkout-client').value = type === 'TICKET' ? 'CLIENTE GENERAL (SIN COMPROBANTE)' : '';
             let total = cart.reduce((acc, item) => acc + (item.sellPrice * item.quantity), 0);
             document.getElementById('checkout-modal-total').textContent = `S/ ${total.toFixed(2)}`;
             document.getElementById('checkout-modal').classList.remove('hidden');
-        }
-        function closeCheckoutModal() {
-            document.getElementById('checkout-modal').classList.add('hidden');
-        }
+        };
 
-        function processCheckoutFinal() {
+        window.closeCheckoutModal = function() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        };
+
+        window.quickSunatCheckout = async function() {
+            const docNum = document.getElementById('checkout-doc').value.trim();
+            if (docNum.length === 8 || docNum.length === 11) {
+                await fetchSunatRealData(docNum, 'checkout-client', null);
+            } else {
+                alert('Ingrese un número de DNI (8 dígitos) o RUC (11 dígitos) válido antes de consultar.');
+            }
+        };
+
+        window.processCheckoutFinal = async function() {
             const doc = document.getElementById('checkout-doc').value.trim() || '00000000';
             const client = document.getElementById('checkout-client').value.trim() || 'CLIENTE GENERAL';
             
@@ -950,13 +1105,19 @@
             let totalBuy = cart.reduce((acc, item) => acc + (item.buyPrice * item.quantity), 0);
             let profit = total - totalBuy;
 
-            cart.forEach(item => {
+            for (let item of cart) {
                 const p = products.find(prod => prod.code === item.code);
-                if (p) p.stock = Math.max(0, p.stock - item.quantity);
-            });
+                if (p) {
+                    p.stock = Math.max(0, p.stock - item.quantity);
+                    if (auth.currentUser) {
+                        try {
+                            await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', p.id || p.code), { stock: p.stock });
+                        } catch(e) { console.error(e); }
+                    }
+                }
+            }
 
             const saleRecord = {
-                id: 'XW-' + Math.floor(100000 + Math.random() * 900000),
                 type: currentCheckoutType,
                 doc: doc,
                 client: client,
@@ -968,8 +1129,14 @@
                 date: new Date().toISOString()
             };
 
-            salesHistory.unshift(saleRecord);
-            saveData();
+            if (auth.currentUser) {
+                try {
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'sales'), saleRecord);
+                } catch(e) { console.error(e); }
+            } else {
+                salesHistory.unshift(saleRecord);
+                saveLocalData();
+            }
             
             cart = [];
             renderCart();
@@ -980,40 +1147,91 @@
             closeCheckoutModal();
 
             generatePrintableReceipt(saleRecord);
+        };
+
+        window.consultSunatAPI = async function() {
+            const type = document.getElementById('sunat-doc-type').value;
+            const num = document.getElementById('sunat-doc-num').value.trim();
+            const box = document.getElementById('sunat-result-box');
+
+            if ((type === 'RUC' && num.length !== 11) || (type === 'DNI' && num.length !== 8)) {
+                alert(`Ingrese un número de ${type} válido (${type === 'RUC' ? '11 dígitos' : '8 dígitos'}).`);
+                return;
+            }
+
+            await fetchSunatRealData(num, null, box);
+        };
+
+        async function fetchSunatRealData(num, targetInputId = null, resultBox = null) {
+            try {
+                let apiUrl = `https://api.apis.net.pe/v2/${num.length === 11 ? 'sunat/ruc' : 'reniec/dni'}?numero=${num}`;
+                let token = sunatConfig.token || 'jVStcaLaxj6+5lwATr0Ujg==';
+                
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) throw new Error('Error en consulta API');
+                const data = await response.json();
+
+                let name = data.razonSocial || data.nombreCompleto || `${data.nombres || ''} ${data.apellidoPaterno || ''} ${data.apellidoMaterno || ''}`.trim();
+                let address = data.direccion || data.domicilio || 'CUSCO, PERU';
+
+                if (!name) throw new Error('No encontrado');
+
+                if (targetInputId) {
+                    document.getElementById(targetInputId).value = name;
+                }
+
+                if (resultBox) {
+                    resultBox.classList.remove('hidden');
+                    document.getElementById('sunat-razon-social').textContent = name;
+                    document.getElementById('sunat-direccion').textContent = address;
+                }
+            } catch (err) {
+                console.warn('API lookup error:', err);
+                alert('No se pudo conectar con la API SUNAT/RENIEC. Verifique su token o conexión.');
+            }
         }
 
         function renderSunatHistory() {
             const tbody = document.getElementById('sunat-history-body');
             tbody.innerHTML = '';
+
             if (salesHistory.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Sin comprobantes</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">No hay comprobantes emitidos</td></tr>`;
                 return;
             }
+
             salesHistory.forEach(s => {
-                tbody.innerHTML += `
-                    <tr class="hover:bg-brand-800/40">
-                        <td class="p-3 font-bold text-white">${s.id} (${s.type})</td>
-                        <td class="p-3 text-gray-300">${s.client}</td>
-                        <td class="p-3 text-gray-400">${new Date(s.date).toLocaleString()}</td>
-                        <td class="p-3 text-right font-black text-brand-red">S/ ${s.total.toFixed(2)}</td>
-                        <td class="p-3 text-center space-x-2">
-                            <button onclick='printSpecificReceipt(${JSON.stringify(s)})' class="bg-brand-800 text-white px-2.5 py-1 rounded text-[11px] font-bold"><i class="fa-solid fa-print"></i></button>
-                            <button onclick='sendWhatsAppReceipt(${JSON.stringify(s)})' class="bg-emerald-600 text-white px-2.5 py-1 rounded text-[11px] font-bold"><i class="fa-brands fa-whatsapp"></i></button>
-                        </td>
-                    </tr>
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-brand-800/40 transition';
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-white">${s.id || 'XW-DOC'} (${s.type})</td>
+                    <td class="p-3 text-gray-300">${s.client} (${s.doc})</td>
+                    <td class="p-3 text-gray-400">${new Date(s.date).toLocaleString()}</td>
+                    <td class="p-3 text-right font-black text-brand-red">S/ ${parseFloat(s.total).toFixed(2)}</td>
+                    <td class="p-3 text-center space-x-2">
+                        <button onclick='printSpecificReceipt(${JSON.stringify(s)})' class="bg-brand-800 hover:bg-brand-700 text-white px-2.5 py-1 rounded text-[11px] font-bold"><i class="fa-solid fa-print"></i></button>
+                        <button onclick='sendWhatsAppReceipt(${JSON.stringify(s)})' class="bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-1 rounded text-[11px] font-bold"><i class="fa-brands fa-whatsapp"></i></button>
+                    </td>
                 `;
+                tbody.appendChild(tr);
             });
         }
 
         function generatePrintableReceipt(s) {
             const receiptDiv = document.getElementById('printable-receipt');
             receiptDiv.innerHTML = `
-                <div style="font-family: monospace; padding: 20px; max-width: 400px; margin: auto; background: white; color: black;">
+                <div style="font-family: monospace; padding: 20px; max-width: 400px; margin: auto; background: white; color: black; border: 1px solid #ccc;">
                     <div style="text-align: center; border-bottom: 1px dashed #000; padding-bottom: 10px;">
-                        <h2 style="margin: 0; font-size: 16px; font-weight: bold;">RX AURORA COMPANY SAC</h2>
-                        <p style="margin: 2px 0; font-size: 11px;">RUC: 20616684141</p>
-                        <p style="margin: 2px 0; font-size: 11px;">CALLE LOS HEROES. ASOCIACION GILBER URBIOLA VALER MAZ.D LT.5</p>
-                        <p style="margin: 2px 0; font-size: 12px; font-weight: bold;">${s.type}: ${s.id}</p>
+                        <h2 style="margin: 0; font-size: 16px; font-weight: bold;">${sunatConfig.razon}</h2>
+                        <p style="margin: 2px 0; font-size: 11px;">RUC: ${sunatConfig.ruc}</p>
+                        <p style="margin: 2px 0; font-size: 10px;">${sunatConfig.dir}</p>
+                        <p style="margin: 4px 0; font-size: 12px; font-weight: bold;">COMPROBANTE: ${s.type} ${s.id || 'XW-DOC'}</p>
                     </div>
                     <div style="margin: 10px 0; font-size: 11px;">
                         <p style="margin: 2px 0;"><strong>Fecha:</strong> ${new Date(s.date).toLocaleString()}</p>
@@ -1031,7 +1249,7 @@
                         <tbody>
                             ${s.items.map(i => `
                                 <tr>
-                                    <td style="padding: 4px 0;">${i.quantity}x ${i.name.substring(0, 18)}</td>
+                                    <td style="padding: 4px 0;">${i.quantity}x ${i.name.substring(0, 20)}</td>
                                     <td style="text-align:right;">S/${i.sellPrice.toFixed(2)}</td>
                                     <td style="text-align:right;">S/${(i.sellPrice * i.quantity).toFixed(2)}</td>
                                 </tr>
@@ -1041,71 +1259,106 @@
                     <div style="border-top: 1px dashed #000; padding-top: 10px; font-size: 11px; text-align: right;">
                         <p style="margin: 2px 0;">Subtotal: S/ ${s.subtotal.toFixed(2)}</p>
                         <p style="margin: 2px 0;">IGV (18%): S/ ${s.igv.toFixed(2)}</p>
-                        <p style="margin: 4px 0; font-size: 13px; font-weight: bold;">TOTAL: S/ ${s.total.toFixed(2)}</p>
+                        <p style="margin: 4px 0; font-size: 14px; font-weight: bold;">TOTAL: S/ ${s.total.toFixed(2)}</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 15px; font-size: 10px; border-top: 1px dashed #000; padding-top: 10px;">
+                        <p style="margin: 0;">Representación Impresa • ${s.type}</p>
+                        <p style="margin: 2px 0;">${sunatConfig.razon} • Sede Cusco</p>
                     </div>
                 </div>
             `;
             window.print();
         }
 
-        function printSpecificReceipt(s) { generatePrintableReceipt(s); }
+        window.printSpecificReceipt = function(s) {
+            generatePrintableReceipt(s);
+        };
 
-        function sendWhatsAppReceipt(s) {
-            const phone = prompt("Ingrese WhatsApp del cliente (+51...):", "+51");
+        window.sendWhatsAppReceipt = function(s) {
+            const phone = prompt("Ingrese el número de WhatsApp del cliente (ej. +51999999999):", "+51");
             if (!phone) return;
-            let msg = `*RX AURORA COMPANY SAC - COMPROBANTE*\n${s.type}: ${s.id}\nCliente: ${s.client}\nTotal: S/ ${s.total.toFixed(2)}\n¡Gracias por su compra!`;
-            window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
 
-        function renderInventoryTable() {
+            let msg = `*${sunatConfig.razon} - ${s.type}*\n`;
+            msg += `Documento: ${s.id || 'XW-DOC'}\n`;
+            msg += `Fecha: ${new Date(s.date).toLocaleString()}\n`;
+            msg += `Cliente: ${s.client}\n\n`;
+            msg += `*DETALLE:*\n`;
+            s.items.forEach(i => {
+                msg += `- ${i.quantity}x ${i.name} (S/ ${(i.sellPrice * i.quantity).toFixed(2)})\n`;
+            });
+            msg += `\n*TOTAL A PAGAR: S/ ${s.total.toFixed(2)}*\n`;
+            msg += `¡Gracias por su compra en X-WOLX!`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encoded}`, '_blank');
+        };
+
+        window.renderInventoryTable = function() {
             const query = (document.getElementById('inv-search').value || '').toLowerCase();
             const tbody = document.getElementById('inventory-table-body');
             tbody.innerHTML = '';
 
             const filtered = products.filter(p => p.code.toLowerCase().includes(query) || p.name.toLowerCase().includes(query));
-            filtered.forEach((p, idx) => {
-                const originalIndex = products.findIndex(item => item.code === p.code);
-                tbody.innerHTML += `
-                    <tr class="hover:bg-brand-800/40">
-                        <td class="p-4"><div class="w-12 h-12 rounded-xl bg-brand-950 overflow-hidden border border-brand-800"><img src="${p.image}" class="w-full h-full object-cover"></div></td>
-                        <td class="p-4 font-mono font-bold text-brand-red">${p.code}</td>
-                        <td class="p-4 font-bold text-white max-w-xs"><div class="line-clamp-2">${p.name}</div></td>
-                        <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full text-xs font-bold ${p.stock > 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}">${p.stock}</span></td>
-                        <td class="p-4 text-right text-gray-300">S/ ${p.buyPrice.toFixed(2)}</td>
-                        <td class="p-4 text-right text-white font-bold">S/ ${p.sellPrice.toFixed(2)}</td>
-                        <td class="p-4 text-center space-x-2">
-                            <button onclick="openProductModal(${originalIndex})" class="bg-brand-800 text-white px-3 py-1.5 rounded-lg text-xs font-bold"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="restockProduct(${originalIndex})" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold"><i class="fa-solid fa-boxes-stacked"></i></button>
-                        </td>
-                    </tr>
-                `;
-            });
-        }
 
-        function openProductModal(index = -1) {
-            document.getElementById('prod-edit-index').value = index;
-            if (index >= 0) {
-                const p = products[index];
-                document.getElementById('product-modal-title').textContent = 'Editar Producto';
-                document.getElementById('prod-code').value = p.code;
-                document.getElementById('prod-name').value = p.name;
-                document.getElementById('prod-stock').value = p.stock;
-                document.getElementById('prod-buy-price').value = p.buyPrice;
-                document.getElementById('prod-sell-price').value = p.sellPrice;
-                document.getElementById('prod-image').value = p.image;
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-gray-500">No se encontraron productos en el inventario</td></tr>`;
+                return;
+            }
+
+            filtered.forEach((p, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-brand-800/40 transition';
+                tr.innerHTML = `
+                    <td class="p-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950 overflow-hidden border border-brand-800">
+                            <img src="${p.image}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/141414/dc2626?text=XW'">
+                        </div>
+                    </td>
+                    <td class="p-4 font-mono font-bold text-brand-red">${p.code}</td>
+                    <td class="p-4 font-bold text-white max-w-xs"><div class="line-clamp-2">${p.name}</div></td>
+                    <td class="p-4 text-center">
+                        <span class="px-2.5 py-1 rounded-full text-xs font-bold ${p.stock > 0 ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}">${p.stock}</span>
+                    </td>
+                    <td class="p-4 text-right text-gray-300 font-medium">S/ ${parseFloat(p.buyPrice).toFixed(2)}</td>
+                    <td class="p-4 text-right text-white font-bold">S/ ${parseFloat(p.sellPrice).toFixed(2)}</td>
+                    <td class="p-4 text-center space-x-2">
+                        <button onclick="openProductModal('${p.id || p.code}')" class="bg-brand-800 hover:bg-brand-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="restockProduct('${p.id || p.code}')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold" title="Reabastecer Stock"><i class="fa-solid fa-boxes-stacked"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+
+        window.openProductModal = function(productId = '') {
+            document.getElementById('prod-edit-id').value = productId;
+            if (productId) {
+                const p = products.find(item => (item.id === productId || item.code === productId));
+                if (p) {
+                    document.getElementById('product-modal-title').textContent = 'Editar Producto';
+                    document.getElementById('prod-code').value = p.code;
+                    document.getElementById('prod-name').value = p.name;
+                    document.getElementById('prod-stock').value = p.stock;
+                    document.getElementById('prod-buy-price').value = p.buyPrice;
+                    document.getElementById('prod-sell-price').value = p.sellPrice;
+                    document.getElementById('prod-image').value = p.image;
+                }
             } else {
                 document.getElementById('product-modal-title').textContent = 'Nuevo Producto';
                 document.getElementById('product-form').reset();
-                document.getElementById('prod-edit-index').value = -1;
+                document.getElementById('prod-edit-id').value = '';
                 document.getElementById('prod-image').value = 'https://placehold.co/400x300/141414/dc2626?text=X-WOLX';
             }
             document.getElementById('product-modal').classList.remove('hidden');
-        }
-        function closeProductModal() { document.getElementById('product-modal').classList.add('hidden'); }
+        };
 
-        function saveProduct(e) {
+        window.closeProductModal = function() {
+            document.getElementById('product-modal').classList.add('hidden');
+        };
+
+        window.saveProduct = async function(e) {
             e.preventDefault();
-            const index = parseInt(document.getElementById('prod-edit-index').value);
+            const editId = document.getElementById('prod-edit-id').value;
             const code = document.getElementById('prod-code').value.trim();
             const name = document.getElementById('prod-name').value.trim();
             const stock = parseInt(document.getElementById('prod-stock').value);
@@ -1113,54 +1366,110 @@
             const sellPrice = parseFloat(document.getElementById('prod-sell-price').value);
             const image = document.getElementById('prod-image').value.trim() || 'https://placehold.co/400x300/141414/dc2626?text=X-WOLX';
 
-            if (index >= 0) {
-                products[index] = { code, name, stock, buyPrice, sellPrice, image };
+            const prodData = { code, name, stock, buyPrice, sellPrice, image };
+
+            if (editId) {
+                const existing = products.find(p => p.id === editId || p.code === editId);
+                const docId = existing ? (existing.id || existing.code) : code;
+                if (auth.currentUser) {
+                    try {
+                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', docId), prodData, { merge: true });
+                    } catch(e) { console.error(e); }
+                } else {
+                    const idx = products.findIndex(p => p.id === editId || p.code === editId);
+                    if (idx >= 0) products[idx] = { id: docId, ...prodData };
+                    saveLocalData();
+                }
             } else {
-                products.unshift({ code, name, stock, buyPrice, sellPrice, image });
+                const docId = code;
+                if (auth.currentUser) {
+                    try {
+                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', docId), prodData);
+                    } catch(e) { console.error(e); }
+                } else {
+                    products.unshift({ id: docId, ...prodData });
+                    saveLocalData();
+                }
             }
-            saveData();
+
             renderInventoryTable();
             renderPosCatalog();
             closeProductModal();
-        }
+        };
 
-        function restockProduct(index) {
-            const add = prompt(`Cantidad a reabastecer para ${products[index].name}:`, "10");
+        window.restockProduct = async function(productId) {
+            const p = products.find(item => item.id === productId || item.code === productId);
+            if (!p) return;
+
+            const add = prompt(`Ingrese la cantidad a reabastecer para ${p.name}:`, "10");
             if (add && !isNaN(parseInt(add))) {
                 const qty = parseInt(add);
-                products[index].stock += qty;
-                expensesList.unshift({
-                    concept: `Reabastecimiento: ${products[index].code} (${qty} und)`,
+                p.stock += qty;
+                
+                const expenseRecord = {
+                    concept: `Reabastecimiento de stock: ${p.code} (${qty} und)`,
                     category: 'COMPRA_INVENTARIO',
-                    amount: products[index].buyPrice * qty,
+                    amount: p.buyPrice * qty,
                     date: new Date().toISOString()
-                });
-                saveData();
+                };
+
+                if (auth.currentUser) {
+                    try {
+                        await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', p.id || p.code), { stock: p.stock });
+                        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'expenses'), expenseRecord);
+                    } catch(e) { console.error(e); }
+                } else {
+                    expensesList.unshift(expenseRecord);
+                    saveLocalData();
+                }
+
                 renderInventoryTable();
                 renderPosCatalog();
+                renderReports('today');
             }
-        }
+        };
 
-        function openExpenseModal() { document.getElementById('expense-modal').classList.remove('hidden'); }
-        function closeExpenseModal() { document.getElementById('expense-modal').classList.add('hidden'); }
-        function saveExpense(e) {
+        window.openExpenseModal = function() {
+            document.getElementById('expense-modal').classList.remove('hidden');
+        };
+        window.closeExpenseModal = function() {
+            document.getElementById('expense-modal').classList.add('hidden');
+        };
+        window.saveExpense = async function(e) {
             e.preventDefault();
             const concept = document.getElementById('exp-concept').value.trim();
             const category = document.getElementById('exp-category').value;
             const amount = parseFloat(document.getElementById('exp-amount').value);
-            expensesList.unshift({ concept, category, amount, date: new Date().toISOString() });
-            saveData();
+
+            const expenseRecord = { concept, category, amount, date: new Date().toISOString() };
+
+            if (auth.currentUser) {
+                try {
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'expenses'), expenseRecord);
+                } catch(e) { console.error(e); }
+            } else {
+                expensesList.unshift(expenseRecord);
+                saveLocalData();
+            }
+
             closeExpenseModal();
             renderReports('today');
-        }
+        };
 
-        function renderReports(filter) {
+        window.renderReports = function(filter) {
             document.querySelectorAll('.report-filter-btn').forEach(btn => {
                 btn.className = 'report-filter-btn px-3 py-2 rounded-xl text-xs font-bold bg-brand-800 text-gray-300 hover:bg-brand-700 transition';
             });
+            
             if (typeof event !== 'undefined' && event && event.target && event.target.classList) {
                 event.target.classList.replace('bg-brand-800', 'bg-brand-red');
                 event.target.classList.replace('text-gray-300', 'text-white');
+            } else {
+                const defaultBtn = document.querySelector('.report-filter-btn');
+                if (defaultBtn) {
+                    defaultBtn.classList.replace('bg-brand-800', 'bg-brand-red');
+                    defaultBtn.classList.replace('text-gray-300', 'text-white');
+                }
             }
 
             const now = new Date();
@@ -1169,6 +1478,7 @@
                 if (filter === 'today') return d.toDateString() === now.toDateString();
                 if (filter === 'week') return (now - d) <= 7 * 24 * 60 * 60 * 1000;
                 if (filter === 'month') return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+                if (filter === 'year') return d.getFullYear() === now.getFullYear();
                 return true;
             });
 
@@ -1177,13 +1487,14 @@
                 if (filter === 'today') return d.toDateString() === now.toDateString();
                 if (filter === 'week') return (now - d) <= 7 * 24 * 60 * 60 * 1000;
                 if (filter === 'month') return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+                if (filter === 'year') return d.getFullYear() === now.getFullYear();
                 return true;
             });
 
-            let totalSalesAmount = filteredSales.reduce((acc, s) => acc + s.total, 0);
-            let totalProfitAmount = filteredSales.reduce((acc, s) => acc + s.profit, 0);
-            let totalExpensesAmount = filteredExpenses.reduce((acc, e) => acc + e.amount, 0);
-            let totalInventoryValuation = products.reduce((acc, p) => acc + (p.stock * p.buyPrice), 0);
+            let totalSalesAmount = filteredSales.reduce((acc, s) => acc + parseFloat(s.total || 0), 0);
+            let totalProfitAmount = filteredSales.reduce((acc, s) => acc + parseFloat(s.profit || 0), 0);
+            let totalExpensesAmount = filteredExpenses.reduce((acc, e) => acc + parseFloat(e.amount || 0), 0);
+            let totalInventoryValuation = products.reduce((acc, p) => acc + (p.stock * parseFloat(p.buyPrice || 0)), 0);
 
             document.getElementById('rep-total-sales').textContent = `S/ ${totalSalesAmount.toFixed(2)}`;
             document.getElementById('rep-sales-count').textContent = `${filteredSales.length} transacciones`;
@@ -1193,16 +1504,38 @@
 
             const salesTbody = document.getElementById('report-sales-tbody');
             salesTbody.innerHTML = '';
-            filteredSales.forEach(s => {
-                salesTbody.innerHTML += `<tr class="hover:bg-brand-800/40"><td class="p-3 font-bold text-white">${s.id}</td><td class="p-3 text-gray-400">${new Date(s.date).toLocaleDateString()}</td><td class="p-3 text-right font-bold text-white">S/ ${s.total.toFixed(2)}</td><td class="p-3 text-right font-bold text-emerald-400">S/ ${s.profit.toFixed(2)}</td></tr>`;
-            });
+            if (filteredSales.length === 0) {
+                salesTbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Sin ventas en este período</td></tr>`;
+            } else {
+                filteredSales.forEach(s => {
+                    salesTbody.innerHTML += `
+                        <tr class="hover:bg-brand-800/40">
+                            <td class="p-3 font-bold text-white">${s.id || 'XW-DOC'}</td>
+                            <td class="p-3 text-gray-400">${new Date(s.date).toLocaleDateString()}</td>
+                            <td class="p-3 text-right font-bold text-white">S/ ${parseFloat(s.total).toFixed(2)}</td>
+                            <td class="p-3 text-right font-bold text-emerald-400">S/ ${parseFloat(s.profit).toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+            }
 
             const expTbody = document.getElementById('report-expenses-tbody');
             expTbody.innerHTML = '';
-            filteredExpenses.forEach(e => {
-                expTbody.innerHTML += `<tr class="hover:bg-brand-800/40"><td class="p-3 font-bold text-white">${e.concept}</td><td class="p-3 text-gray-400">${e.category}</td><td class="p-3 text-gray-400">${new Date(e.date).toLocaleDateString()}</td><td class="p-3 text-right font-bold text-brand-red">S/ ${e.amount.toFixed(2)}</td></tr>`;
-            });
-        }
+            if (filteredExpenses.length === 0) {
+                expTbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Sin gastos ni compras registradas</td></tr>`;
+            } else {
+                filteredExpenses.forEach(e => {
+                    expTbody.innerHTML += `
+                        <tr class="hover:bg-brand-800/40">
+                            <td class="p-3 font-bold text-white">${e.concept}</td>
+                            <td class="p-3 text-gray-400"><span class="bg-brand-800 px-2 py-0.5 rounded text-[10px] font-bold text-brand-red">${e.category}</span></td>
+                            <td class="p-3 text-gray-400">${new Date(e.date).toLocaleDateString()}</td>
+                            <td class="p-3 text-right font-bold text-brand-red">S/ ${parseFloat(e.amount).toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+            }
+        };
     </script>
 </body>
 </html>
